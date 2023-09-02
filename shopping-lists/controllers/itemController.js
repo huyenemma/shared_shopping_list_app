@@ -1,4 +1,4 @@
-import { renderFile } from "https://deno.land/x/eta@v2.0.0/mod.ts";
+import { renderFile } from "../deps.js"
 import * as itemService from "../services/itemService.js";
 import * as requestUtils from "../utils/requestUtils.js";
 
@@ -38,4 +38,4 @@ const markItemCollected = async (request) => {
     return requestUtils.redirectTo(`/lists/${listId}`); 
 }
 
-export {addItem, showItem, markItemCollected }; 
+export { addItem, showItem, markItemCollected }; 

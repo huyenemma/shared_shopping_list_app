@@ -12,5 +12,10 @@ const deactivateById = async (id) => {
     await sql`UPDATE shopping_lists SET active = false WHERE id = ${id}`; 
 }
 
+const countLists = async () => {
+    const result = await sql`SELECT COUNT(*) as count FROM shopping_lists`;
+    return result[0]?.count || 0;
+}
 
-export { createList, findActiveList, deactivateById };
+
+export { createList, findActiveList, deactivateById, countLists };
