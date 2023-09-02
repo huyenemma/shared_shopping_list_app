@@ -6,7 +6,9 @@ configure({
   });
 
 const handleRequest = async (request) => {
-  console.log("Responding with Hello world!");
+  const url = new URL(request.url);
+
+  if (request)
   return new Response("Hello world!");
 };
 
