@@ -9,15 +9,17 @@ const responseDetails = {
 
 const addItem = async (request) => { 
     const formData = await request.formData(); 
-    const listId = formData.get("list_id"); 
     const name = formData.get("name"); 
+
+    const url = new URL(request.url);
+    const listId = url.pathname.split("/")[2];
 
     await itemService.createItem(listId, name); 
 
-    return requestUtils.redirectTo('/lists/${listId}'); 
+    return requestUtils.redirectTo(`/lists/${listId}`); 
 };
 
-const showItem = async (request) => { 
+const showItems = async (request) => { 
     const url = new URL(request.url); 
     const listId = url.pathname.split("/")[2];
 
@@ -28,10 +30,10 @@ const showItem = async (request) => {
         listId: listId,
         listName: list_contain_item.name,
         uncollectedItems: items.filter(item => !item.collected),
-        collectedItems: items.filer(item => item.collected),
+        collectedItems: items.filter(item => item.collected),
     }; 
 
-    return new Response(await renderFile("item.eta", data), responseDetails);
+    return new Response(await renderFile("items.eta", data), responseDetails);
 }
 
 const markItemCollected = async (request) => {
@@ -45,4 +47,4 @@ const markItemCollected = async (request) => {
     return requestUtils.redirectTo(`/lists/${listId}`); 
 }
 
-export { addItem, showItem, markItemCollected }; 
+export { addItem, showItems, markItemCollected }; 
