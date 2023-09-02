@@ -19,7 +19,7 @@ const showList = async (request) => {
     const url = new URL(request.url);
     
     const data = {
-        list: await listService.findActiveList(),
+        lists: await listService.findActiveList(),
     }
 
     return new Response(await renderFile("lists.eta", data), responseDetails);

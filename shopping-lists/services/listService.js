@@ -8,6 +8,11 @@ const findActiveList = async () => {
     return await sql`SELECT * FROM shopping_lists WHERE active = true`;
 }
 
+const findListById = async (id) => { 
+    const results = await sql`SELECT * FROM shopping_lists WHERE id = ${id}`;
+    return results[0]
+}
+
 const deactivateById = async (id) => {
     await sql`UPDATE shopping_lists SET active = false WHERE id = ${id}`; 
 }
@@ -18,4 +23,4 @@ const countLists = async () => {
 }
 
 
-export { createList, findActiveList, deactivateById, countLists };
+export { createList, findActiveList, deactivateById, countLists , findListById };

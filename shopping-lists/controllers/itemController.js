@@ -1,5 +1,6 @@
 import { renderFile } from "../deps.js"
 import * as itemService from "../services/itemService.js";
+import * as listService from "../services/listService.js";
 import * as requestUtils from "../utils/requestUtils.js";
 
 const responseDetails = {
@@ -18,11 +19,17 @@ const addItem = async (request) => {
 
 const showItem = async (request) => { 
     const url = new URL(request.url); 
-    const urlparts = url.pathname.split("/");
+    const listId = url.pathname.split("/")[2];
+
+    const items = await itemService.findItemByListId(listId);
+    const list_contain_item = await listService.findListById(listId); 
 
     const data = {
-        items: await itemService.findItemByListId(urlparts[2]),
-    }
+        listId: listId,
+        listName: list_contain_item.name,
+        uncollectedItems: items.filter(item => !item.collected),
+        collectedItems: items.filer(item => item.collected),
+    }; 
 
     return new Response(await renderFile("item.eta", data), responseDetails);
 }
