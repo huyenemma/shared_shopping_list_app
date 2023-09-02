@@ -6,7 +6,7 @@
     
     <ul> 
         <li> Shopping lists: <%= it.listCount %></li> 
-        <li> Shopping items: <%= it.itemCount %></li> 
+        <li> Shopping list items: <%= it.itemCount %></li> 
     </ul>
 <% } else { %>
         <p>No shopping lists yet.</p>
