@@ -1,7 +1,9 @@
-# Project 1: Shared shopping list
+# Shared shopping list
 
-Write the documentation of your project here. Do not include your personal
-details (e.g. name or student number).
+The application is designed to provide an easy interface for usets to create and manage shopping lists. 
 
-Remember to include the address of the online location where your project is
-running as it is a key part of the submission.
+## Features
+- Create and manage shopping lists 
+- Add items to individual lists
+- Mark items as collected
+
