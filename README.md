@@ -8,7 +8,7 @@ The application is designed to provide an easy interface for usets to create and
 - Mark items as collected
 
 ## Live Demo 
-You can try out the live demo at 
+You can try out the live demo at [here](https://project-1-share-shopping-lists.onrender.com/) (deploy on Render) 
 
 ## Local test
 1. Clone this repository
